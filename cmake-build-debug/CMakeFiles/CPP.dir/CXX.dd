@@ -1,0 +1,5 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/CPP.dir/main.cpp.o: dyndep
+
+build CMakeFiles/CPP.dir/Nyoba_CPP/ACO.cpp.o: dyndep
+

@@ -1,4 +1,13 @@
 /home/gabriel/Downloads/clion-2024.2.0.1/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/gabriel/Downloads/clion-2024.2.0.1/bin/ninja/linux/x64/ninja -G Ninja -S /home/gabriel/CPP -B /home/gabriel/CPP/cmake-build-debug
 -- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /home/gabriel/CPP/cmake-build-debug
+CMake Error at CMakeLists.txt:6 (add_executable):
+  Cannot find source file:
+
+    Nyoba CPP/ACO.cpp
+
+
+CMake Error at CMakeLists.txt:6 (add_executable):
+  No SOURCES given to target: CPP
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
