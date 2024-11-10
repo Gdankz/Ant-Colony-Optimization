@@ -42,10 +42,12 @@ public:
         double total = 0.0;
 
         for (int city = 0; city < numCities; city++) {
-            double pheromone = pow(pheromones[currentCity][city], ALPHA);
-            double visibility = pow(1.0/distances[currentCity][city], BETA);
-            probabilities[city] = pheromone * visibility;
-            total += probabilities[city];
+            if (!visited[city]) {
+                double pheromone = pow(pheromones[currentCity][city], ALPHA);
+                double visibility = pow(1.0 / distances[currentCity][city], BETA);
+                probabilities[city] = pheromone * visibility;
+                total += probabilities[city];
+            }
         }
 
         if (total > 0) {
@@ -57,9 +59,11 @@ public:
         double r = dis(gen);
         double sum = 0.0;
         for (int i = 0; i < numCities; i++) {
-            sum += probabilities[i];
-            if (r <= sum && !visited[i]) {
-                return i;
+            if (!visited[i]) {
+                sum += probabilities[i];
+                if (r <= sum) {
+                    return i;
+                }
             }
         }
 
@@ -69,6 +73,7 @@ public:
 
         return -1;
     }
+
 
     double calculatePathLength(const vector<int>& path) {
         double length = 0.0;
@@ -136,11 +141,18 @@ public:
 
 int main() {
     vector<vector<double>> distances = {
-        {0.0, 2.0, 5.0, 7.0},
-        {2.0, 0.0, 4.0, 6.0},
-        {5.0, 4.0, 0.0, 3.0},
-        {7.0, 6.0, 3.0, 0.0}
+        {0.0, 12.0, 7.0, 15.0, 10.0, 6.0, 14.0, 9.0, 3.0, 18.0},   // Kota 0
+        {12.0, 0.0, 8.0, 5.0, 11.0, 16.0, 13.0, 7.0, 4.0, 10.0},   // Kota 1
+        {7.0, 8.0, 0.0, 9.0, 17.0, 2.0, 6.0, 14.0, 10.0, 12.0},    // Kota 2
+        {15.0, 5.0, 9.0, 0.0, 3.0, 11.0, 8.0, 6.0, 16.0, 13.0},    // Kota 3
+        {10.0, 11.0, 17.0, 3.0, 0.0, 4.0, 5.0, 19.0, 7.0, 15.0},   // Kota 4
+        {6.0, 16.0, 2.0, 11.0, 4.0, 0.0, 12.0, 8.0, 14.0, 9.0},    // Kota 5
+        {14.0, 13.0, 6.0, 8.0, 5.0, 12.0, 0.0, 3.0, 11.0, 7.0},    // Kota 6
+        {9.0, 7.0, 14.0, 6.0, 19.0, 8.0, 3.0, 0.0, 15.0, 4.0},     // Kota 7
+        {3.0, 4.0, 10.0, 16.0, 7.0, 14.0, 11.0, 15.0, 0.0, 6.0},   // Kota 8
+        {18.0, 10.0, 12.0, 13.0, 15.0, 9.0, 7.0, 4.0, 6.0, 0.0}    // Kota 9
     };
+
 
     ACO aco(distances);
     vector<int> bestPath = aco.solve();
