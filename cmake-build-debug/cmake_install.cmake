@@ -1,4 +1,4 @@
-# Install script for directory: /home/gabriel/CPP
+# Install script for directory: /home/nicolaus/Semester 5/Algoritma Optimasi/Coding/Ant Colony Optimization
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/gabriel/CPP/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/nicolaus/Semester 5/Algoritma Optimasi/Coding/Ant Colony Optimization/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
